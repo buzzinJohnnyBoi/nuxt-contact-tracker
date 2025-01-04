@@ -5,6 +5,7 @@ import z from "zod";
 export default defineEventHandler(async (event) => {
   const body: NewContact = await readBody(event);
   console.log(body);
+  body.birthDate = new Date(body.birthDate || "");
   const [contactId] = await MySQL.insert(contact).values(body);
 
   return {
