@@ -9,14 +9,20 @@ const existingContact = props.contact;
 
 const newContact = reactive({
   firstName: existingContact?.firstName || "",
-  lastName: existingContact?.lastName || "John",
+  lastName: existingContact?.lastName || "",
   birthDate: existingContact?.birthDate || null,
   email: existingContact?.email || "",
   phone: existingContact?.phone || "",
   address: existingContact?.address || "",
 });
 
-async function login() {
+async function saveContact() {
+  if (existingContact) {
+    return $fetch(`/api/contacts/${existingContact.id}`, {
+      method: "PUT",
+      body: newContact,
+    });
+  }
   $fetch("/api/contacts/create", {
     method: "POST",
     body: newContact,
@@ -25,8 +31,8 @@ async function login() {
 </script>
 
 <template>
-  <div class="w-1/2 mx-auto">
-    <form @submit.prevent="login">
+  <div class="w-full">
+    <form @submit.prevent="saveContact">
       <div class="space-y-12">
         <div class="border-b border-gray-900/10 pb-12 w-1/2">
           <h2 class="text-base/7 font-semibold text-gray-900">
@@ -107,12 +113,14 @@ async function login() {
           </div>
         </div>
       </div>
-      <button
-        type="submit"
-        class="bg-blue-500 hover:bg-blue-700 text-white p-3 rounded"
-      >
-        Create New Contact
-      </button>
+      <div class="mt-4 flex justify-center items-end">
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white p-3 rounded"
+        >
+          Save Contact
+        </button>
+      </div>
     </form>
   </div>
 </template>

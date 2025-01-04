@@ -9,8 +9,9 @@ const { data, error, status }: { data: Contact[]; error: any; status: any } =
   <div v-if="status === 'pending'">Loading....</div>
   <div v-else>
     <div v-for="item in data" :key="item.id">
-      {{ item.first_name }}
-      {{ item.last_name }}
+      {{ item.firstName }}
+      {{ item.lastName }}
+      {{ item.birthDate }}
     </div>
   </div>
 </template>

@@ -3,17 +3,15 @@ import {
   text,
   int,
   varchar,
-  mysqlEnum,
-  datetime,
+  date,
   timestamp,
-  decimal,
 } from "drizzle-orm/mysql-core";
 
 export const contact = mysqlTable("contacts", {
   id: int().primaryKey().autoincrement().notNull(),
   firstName: varchar("first_name", { length: 255 }),
   lastName: varchar("last_name", { length: 255 }),
-  birthDate: datetime("birth_date"),
+  birthDate: date("birth_date"),
   email: varchar({ length: 255 }),
   phone: varchar({ length: 255 }),
   address: varchar({ length: 255 }),

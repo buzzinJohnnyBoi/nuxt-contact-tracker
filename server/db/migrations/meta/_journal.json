@@ -8,6 +8,13 @@
       "when": 1735897177564,
       "tag": "0000_young_nightcrawler",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1736005129545,
+      "tag": "0001_useful_tarantula",
+      "breakpoints": true
     }
   ]
 }
