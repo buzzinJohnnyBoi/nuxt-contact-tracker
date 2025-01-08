@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useHead({
+  title: "Update Contact",
+});
+
 import type { Contact } from "~/server/db/schema";
 const route = useRoute();
 const id = route.params.id;
@@ -8,7 +12,7 @@ const {
   error,
   status,
 }: { data: Contact | null; error: any; status: any } =
-  await useAsyncData<Contact>(() => $fetch("/api/contacts/" + id));
+  await useLazyAsyncData<Contact>(() => $fetch("/api/contacts/" + id));
 </script>
 
 <template>

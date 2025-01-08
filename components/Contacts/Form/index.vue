@@ -16,25 +16,37 @@ const newContact = reactive({
   address: existingContact?.address || "",
 });
 
+const message = ref<string | null>(null);
+const error = ref<string | null>(null);
+
 async function saveContact() {
   if (existingContact) {
-    return $fetch(`/api/contacts/${existingContact.id}`, {
+    var response = await $fetch(`/api/contacts/${existingContact.id}`, {
       method: "PUT",
       body: newContact,
     });
+  } else {
+    var response = await $fetch("/api/contacts/create", {
+      method: "POST",
+      body: newContact,
+    });
   }
-  $fetch("/api/contacts/create", {
-    method: "POST",
-    body: newContact,
-  });
+
+  if (response.success) {
+    message.value = response.message;
+    error.value = null;
+  } else {
+    error.value = response.message;
+    message.value = null;
+  }
 }
 </script>
 
 <template>
-  <div class="w-full">
+  <div>
     <form @submit.prevent="saveContact">
-      <div class="space-y-12">
-        <div class="border-b border-gray-900/10 pb-12 w-1/2">
+      <div>
+        <div class="border-b border-gray-900/10 pb-12 w-10/12 md:w-1/2 m-auto">
           <h2 class="text-base/7 font-semibold text-gray-900">
             Contact Information
           </h2>
@@ -112,6 +124,10 @@ async function saveContact() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <div v-if="message" class="text-green-500">{{ message }}</div>
+        <div v-if="error" class="text-red-500">{{ error }}</div>
       </div>
       <div class="mt-4 flex justify-center items-end">
         <button

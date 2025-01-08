@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from "path";
 export default defineNuxtConfig({
+  app: {
+    title: "Nuxt Contact Tracker",
+    description:
+      "A simple contact tracker built with Nuxt + Tailwind + drizzle",
+  },
   alias: {
     "@": resolve(__dirname, "/"),
   },

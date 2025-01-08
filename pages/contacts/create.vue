@@ -1,7 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+useHead({
+  title: "Create Contact",
+});
+</script>
 
 <template>
-  <div class="flex justify-center items-center">
-    <ContactsForm :contact="null" />
+  <div>
+    <div class="mx-auto">
+      <ContactsForm :contact="null" />
+    </div>
   </div>
 </template>

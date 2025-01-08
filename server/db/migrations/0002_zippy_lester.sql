@@ -1,0 +1,1 @@
+ALTER TABLE `contacts` ADD `occupation` varchar(255);
