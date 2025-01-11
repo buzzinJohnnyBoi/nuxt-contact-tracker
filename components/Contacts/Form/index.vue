@@ -47,7 +47,9 @@ async function saveContact() {
     <form @submit.prevent="saveContact">
       <div>
         <div class="border-b border-gray-900/10 pb-12 w-10/12 md:w-1/2 m-auto">
-          <h2 class="text-base/7 font-semibold text-gray-900">
+          <h2
+            class="text-base/7 font-semibold text-gray-900 dark:text-gray-100"
+          >
             Contact Information
           </h2>
           <p class="mt-1 text-sm/6 text-gray-600">
