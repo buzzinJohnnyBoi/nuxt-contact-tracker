@@ -1,75 +1,21 @@
-# Nuxt Minimal Starter
+# Nuxt Contact App
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Simple contact app created with nuxt 3
 
-## Setup
+![image](https://github.com/user-attachments/assets/764d2174-ef15-40f4-9993-60633ae49d02)
 
-Make sure to install dependencies:
+## Technologies
 
-```bash
-# npm
-npm install
+[Nuxt 3](https://nuxt.com/) \
+[Tailwind](https://tailwindcss.com/) \
+[Drizzle ORM](https://orm.drizzle.team/)
 
-# pnpm
-pnpm install
 
-# yarn
-yarn install
+### To install
 
-# bun
-bun install
-```
+`git clone https://github.com/buzzinJohnnyBoi/nuxt-contact-tracker` \
+`npm ci` -> Install Deps \
+`cp .env.example .env.local` -> Copy env and fill out data \
+`npm run dev` -> run dev server
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+* Note that you will have to setup a MySQL server for the database
