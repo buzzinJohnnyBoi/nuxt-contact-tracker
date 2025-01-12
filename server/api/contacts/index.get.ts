@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
     }
   }
   if (parsedQuery.data?.page) {
-    data.offset(parsedQuery.data.page);
+    data.offset((parsedQuery.data.page - 1) * limit);
   }
   return await data.limit(limit);
 });

@@ -22,6 +22,7 @@ export const contact = mysqlTable("contacts", {
   email: varchar({ length: 255 }),
   phone: varchar({ length: 255 }),
   address: varchar({ length: 255 }),
+  note: text(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { refDebounced } from "@vueuse/core";
+import { useEventListener, refDebounced } from "@vueuse/core";
 import { ref, watch } from "vue";
 
 const props = defineProps<{
@@ -23,6 +23,16 @@ watch(debounced, () => {
 
 const totalContacts = props.totalContacts;
 const limit = props.limit;
+
+const searchInput = ref<HTMLInputElement | null>(null);
+
+onMounted(() => {
+  useEventListener(window, "keydown", (event) => {
+    if (event.key === "/") {
+      searchInput.value?.focus();
+    }
+  });
+});
 </script>
 
 <template>
@@ -30,6 +40,7 @@ const limit = props.limit;
     <div>
       <div class="mx-auto w-1/2">
         <input
+          ref="searchInput"
           type="text"
           name="search"
           :value="searchValue"

@@ -1,3 +1,18 @@
+<script setup lang="ts">
+import { useEventListener, refDebounced } from "@vueuse/core";
+const router = useRouter();
+
+onMounted(() => {
+  useEventListener(window, "keydown", (event) => {
+    if (event.ctrlKey && event.key === "q") {
+      router.push("/contacts/create");
+    } else if (event.ctrlKey && event.key === "i") {
+      router.push("/");
+    }
+  });
+});
+</script>
+
 <template>
   <div>
     <nav class="bg-gray-800 p-4">
